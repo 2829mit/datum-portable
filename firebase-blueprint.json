@@ -1,0 +1,90 @@
+{
+  "entities": {
+    "Lead": {
+      "title": "Lead",
+      "description": "Lead form submission captured from the configurator",
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Full name of the customer",
+          "maxLength": 200,
+          "minLength": 1
+        },
+        "mobile": {
+          "type": "string",
+          "description": "10-digit mobile number",
+          "maxLength": 20,
+          "minLength": 10
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "description": "Customer email",
+          "maxLength": 200,
+          "minLength": 3
+        },
+        "company": {
+          "type": "string",
+          "description": "Company name",
+          "maxLength": 200,
+          "minLength": 1
+        },
+        "industry": {
+          "type": "string",
+          "description": "Industry type",
+          "maxLength": 100,
+          "minLength": 1
+        },
+        "state": {
+          "type": "string",
+          "description": "State or UT",
+          "maxLength": 100,
+          "minLength": 1
+        },
+        "consumption": {
+          "type": "string",
+          "description": "Monthly consumption volume",
+          "maxLength": 100,
+          "minLength": 1
+        },
+        "salesperson": {
+          "type": "string",
+          "description": "Repos representative name",
+          "maxLength": 100,
+          "minLength": 1
+        },
+        "status": {
+          "type": "string",
+          "description": "Lead status",
+          "enum": ["new", "contacted", "qualified", "closed"]
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp when lead was created"
+        }
+      },
+      "required": [
+        "name",
+        "mobile",
+        "email",
+        "company",
+        "industry",
+        "state",
+        "consumption",
+        "salesperson",
+        "status",
+        "createdAt"
+      ]
+    }
+  },
+  "firestore": {
+    "/leads/{leadId}": {
+      "schema": {
+        "$ref": "#/entities/Lead"
+      },
+      "description": "Public lead form submissions"
+    }
+  }
+}
